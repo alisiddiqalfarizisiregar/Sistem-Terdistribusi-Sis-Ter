@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "83:80"
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./src:/var/www/html
